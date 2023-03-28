@@ -20,7 +20,11 @@ print("Temperatura: ", textoc)
 #print(texto.split("."))
 # print(" ".join(texto.split(" ")))
 # textoSplit = (" ".join(texto.split(" ")))
+print("<-------Otra forma de hacerlo------->")
 
 texto1 = r.text.split("\r\n")
 texto2 = texto1[len(texto1) -2]
-print(texto2[0:23])
+
+print("Fecha: ", texto2[0:8])
+print("Hora: ", texto2[10:15])
+print("Temperatura: ", texto2[18:22])
