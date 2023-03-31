@@ -1,5 +1,6 @@
 import socket
 import requests
+import json
 
 r = requests.get('https://www.frcon.utn.edu.ar/galileo/downld02.txt')
 
@@ -15,13 +16,14 @@ while True:
             print('received {0}'.format(data))
             if data:
                 print('Enviando de regreso los dato al cliente ')
-                Diccionario = data.decode('utf-8')
+                Diccionario = json.loads(data.decode('utf-8'))
 
                 texto = r.text.split("\r\n")
                 tamaño = len(texto)
                 array = texto[tamaño -2]
 
-                Diccionario = {"temperatura": array[18:22], "humedad": array[25:29]}
+                Diccionario = {"Temperatura": array[18:22], "Humedad": array[40:42]}
+                data = json.dumps(Diccionario)
                 connection.sendall(Diccionario.encode('utf-8'))
             else:
                 print('No hay mas datos del cliente')

@@ -1,4 +1,4 @@
-
+import json
 import socket
 
 # Configuración del cliente
@@ -15,7 +15,7 @@ client_socket.connect((host, port))
 mi_diccionario = {"temperatura": "", "humedad": ""}
 message = "Hola, servidor echo!"
 client_socket.sendall(message.encode())
-client_socket.sendall(mi_diccionario.encode())
+client_socket.sendall(json.dumps(mi_diccionario).encode('utf-8'))
 
 # Recepción de datos del servidor
 data = client_socket.recv(1024)

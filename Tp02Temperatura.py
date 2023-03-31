@@ -28,3 +28,11 @@ texto2 = texto1[len(texto1) -2]
 print("Fecha: ", texto2[0:8])
 print("Hora: ", texto2[10:15])
 print("Temperatura: ", texto2[18:22])
+
+texto = r.text.split("\r\n")
+tamaño = len(texto)
+array = texto[tamaño -2]
+
+Diccionario = {"temperatura": array[18:22], "humedad": array[40:42]}
+print(Diccionario)
+
