@@ -22,7 +22,14 @@ while True:
                 tamaño = len(texto)
                 array = texto[tamaño -2]
 
-                Diccionario = {"Temperatura": array[18:22], "Humedad": array[40:42]}
+                if Diccionario == {"temperatura": "", "humedad": ""}: 
+                    Diccionario = {"temperatura": array[18:22], "humedad": array[40:42]}
+                if Diccionario == {"temperatura": ""}: 
+                    Diccionario = {"temperatura": array[18:22]}
+                if Diccionario == {"humedad": ""}:
+                    Diccionario = {"humedad": array[40:42]}
+                else:
+                     print("No se puede realizar la operacion")
                 data = json.dumps(Diccionario)
                 connection.sendall(Diccionario.encode('utf-8'))
             else:
