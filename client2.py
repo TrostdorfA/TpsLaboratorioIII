@@ -1,4 +1,3 @@
-import json
 import socket
 
 # Configuración del cliente
@@ -12,14 +11,9 @@ client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client_socket.connect((host, port))
 
 # Envío de datos al servidor
-mi_diccionario = {"temperatura": "", "humedad": ""}
-client_socket.sendall(json.dumps(mi_diccionario).encode('utf-8'))
+mi_diccionario = {'temperatura': '', 'humedad': ''}
 
-# Recepción de datos del servidor
+client_socket.sendall(str(mi_diccionario).encode())
 data = client_socket.recv(1024)
-
-# Decodificación de los datos recibidos y muestra del resultado
-print(f"Datos recibidos del servidor: {data.decode()}")
-
-# Cierre del socket
+print (data)
 client_socket.close()
